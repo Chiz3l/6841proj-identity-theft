@@ -13,7 +13,8 @@ API_KEY = os.getenv("API_KEY", "random-api-123")
 @app.post("/api/v1/upload")
 async def upload_document(
     file: UploadFile = File(...),
-    recieved_api_key: str = Header(...)
+    # if i dont have the alias my server crashes becasue fast api expects this syntax?
+    recieved_api_key: str = Header(..., alias="X-API-Key")
 ):
     # checks the api key providede is valid
     if recieved_api_key != API_KEY:

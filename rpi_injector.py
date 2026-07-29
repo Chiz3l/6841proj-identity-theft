@@ -25,7 +25,7 @@ def send_key(hid_dev, char):
     
     # checks if the character we are sending needs a shift key press (e.g for uppercase or ':')
     shift_mask = 0x00;
-    if (char.isupper() or char == ':'):        
+    if (char.isupper() or char in [':', '_', '"', '?', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '{', '}', '|', '<', '>', '~']):        
         shift_mask = 0x02 
     else:
         shift_mask = 0x00
@@ -43,10 +43,9 @@ def send_key(hid_dev, char):
     time.sleep(0.008)
 
 # sends the string as an inejction
-def type_string(hid_device_path, text):
-    with open(hid_device_path, 'rb+', buffering=0) as hid:
-        for char in text:
-            send_key(hid, char)
+def type_string(hid_dev, text):
+    for char in text:
+        send_key(hid_dev, char)
 
 
 ## DUCKY SCRIPT INTERPRETER ##

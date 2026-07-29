@@ -36,7 +36,7 @@ def crawller(search_directory):
 
 # upload files considered imporant to the server
 def upload_file_to_server(file_path, metadata):
-    api_key = {"recieved_api_key": API_KEY}
+    api_key = {"X-API-Key": API_KEY}
     
     # uploading the files to the server
     with open(file_path, "rb") as f:
